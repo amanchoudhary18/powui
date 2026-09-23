@@ -1,24 +1,21 @@
-import eslint from "@eslint/js";
-import prettier from "eslint-config-prettier";
+import eslint from '@eslint/js';
+import prettier from 'eslint-config-prettier';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default defineConfig([
   {
     ignores: [
-      "apps/**",
-      "node_modules/**",
-      "**/dist/**",
-      "**/.next/**",
-      "**/.expo/**",
+      'apps/**',
+      'node_modules/**',
+      '**/dist/**',
+      '**/.next/**',
+      '**/.expo/**',
     ],
   },
   {
-    files: [
-      "packages/**/*.js",
-      "packages/**/*.mjs",
-      "packages/**/*.ts",
-      "packages/**/*.tsx",
-    ],
-    ...eslint.configs.recommended,
+    files: ['packages/**/*.{js,mjs,ts,tsx}'],
+    extends: [eslint.configs.recommended, tseslint.configs.recommended],
   },
   prettier,
-];
+]);

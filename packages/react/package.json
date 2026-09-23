@@ -4,16 +4,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsup && tsc -p tsconfig.build.json"
+    "build": "tsup && tsc -p tsconfig.build.json && cp dist/index.d.ts dist/index.d.cts",
+    "dev": "tsup --watch --no-clean",
+    "typecheck": "tsc --noEmit"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "dependencies": {
@@ -22,10 +29,14 @@
     "@powui/tokens": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^19.3.0",
-    "react": "^19.3.0"
+    "@types/react": "~19.2.18",
+    "react": "19.2.3"
   },
   "peerDependencies": {
-    "react": "^19.3.0"
-  }
+    "react": "^19.0.0"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ]
 }

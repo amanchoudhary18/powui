@@ -3,3 +3,5 @@ dist/
 .next/
 .expo/
 coverage/
+apps/
+pnpm-lock.yaml
