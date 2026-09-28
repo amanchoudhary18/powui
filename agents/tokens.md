@@ -1,25 +1,23 @@
 # Tokens
 
-Plain `.ts` files in `packages/tokens/src/`, `as const`, re-exported from `index.ts`. MCU anecdotes go in comments only.
+`.ts` files in `packages/tokens/src/`, `as const`, re-exported from `index.ts`. MCU anecdotes: comments only.
 
 ## Files
 
-1. `color.ts`: palette (blue, yellow, red, purple, orange, green, gold, gray, ink, paper), each soft/base/deep. Stones: blue Space, yellow Mind, red Reality, purple Power, orange Soul, green Time; gold Gauntlet, gray Vibranium
-2. `theme.ts`: light + dark, same shape
-3. `gradient.ts`: burst, cosmic
-4. `border.ts`: widths, radius none
-5. `shadow.ts`: hard offset, sm/md/lg, color from theme edge
-6. `gutter.ts`: 4px-based scale for React Native (web uses Tailwind)
-7. `typography.ts`: Bangers (display), Outfit (body), not bundled
-8. `motion.ts`: durations, easing, press offsets, pop/shake/pulse
+1. `color.ts` — 10 families, each a 50-950 shade scale
+2. `theme.ts` — see [theme.md](theme.md)
+3. `gradient.ts` — burst, cosmic
+4. `border.ts` — width + radius scales
+5. `shadow.ts` — hard offset sm/md/lg, color from theme.edge
+6. `gutter.ts` — 4px-based scale
+7. `typography.ts` — Bangers/Outfit, sizes + weights
+8. `motion.ts` — duration, easing, press, pop/shake/pulse
+9. `z-index.ts` — base to toast
+10. `breakpoint.ts` — sm-xxl, web only
+11. `opacity.ts` — disabled/muted/hover/full
 
-## theme.ts
-
-- Plain roles: surface, text, edge.
-- Plain variants: primary (red), secondary (blue), outline, ghost, link.
-- Fun accents, no plain aliases: gamma (green), impact (yellow), villain (deep red), cosmic (blue), mutant (purple), vibranium (dark gray).
-- Dark: same role names, different values; edges paper-toned, page ink.
+`scripts/generate-css.mjs` (wired into `build`) → `dist/tokens.css`, `:root` + `[data-theme]`, numbers unitless. Import: `@powui/tokens/tokens.css`.
 
 ## Deferred
 
-z-index, breakpoints, opacity, component tokens, font loading, Figma sync.
+component tokens, font loading, Figma sync.
