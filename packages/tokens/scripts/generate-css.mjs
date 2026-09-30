@@ -1,10 +1,11 @@
 // Turns the built token objects into CSS custom properties (dist/index.js -> dist/tokens.css); numbers are unitless, wrap at the call site.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, '..', 'dist');
+const fontsDir = join(__dirname, '..', 'src', 'fonts');
 
 const tokens = await import(join(distDir, 'index.js'));
 
@@ -47,7 +48,26 @@ for (const [tokenName, tokenValue] of Object.entries(tokens)) {
   }
 }
 
-const css = `:root {
+// Self-hosted so consumers of @powui/react/@powui/react-native never depend on a font CDN.
+const fontFace = `@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Anton-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./fonts/Outfit-Variable.woff2') format('woff2-variations');
+}
+`;
+
+const css = `${fontFace}
+:root {
 ${toDeclarations(rootEntries)}
 }
 
@@ -61,4 +81,5 @@ ${toDeclarations(darkEntries)}
 `;
 
 mkdirSync(distDir, { recursive: true });
+cpSync(fontsDir, join(distDir, 'fonts'), { recursive: true });
 writeFileSync(join(distDir, 'tokens.css'), css);

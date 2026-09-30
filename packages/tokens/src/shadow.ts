@@ -2,8 +2,8 @@ import { theme } from './theme';
 
 /** Hard offset shadows only — no blur, no spread. Color tracks theme.edge. */
 const offset = {
-  sm: 2,
-  md: 4,
+  sm: 4,
+  md: 6,
   lg: 8,
 } as const;
 

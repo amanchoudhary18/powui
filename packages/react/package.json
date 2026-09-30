@@ -35,7 +35,9 @@
   "peerDependencies": {
     "react": "^19.0.0"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "files": [
     "dist"
   ]

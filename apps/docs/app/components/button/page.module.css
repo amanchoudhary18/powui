@@ -1,0 +1,81 @@
+.pageGrid {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+.article {
+  flex: 1;
+  min-width: 0;
+  padding-top: 40px;
+}
+
+.header h1 {
+  font-size: 40px;
+  margin: 0 0 12px;
+}
+
+.header p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #52525b;
+  max-width: 640px;
+  margin: 0;
+}
+
+.section {
+  margin-top: 56px;
+  scroll-margin-top: 24px;
+}
+
+.section h2 {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #52525b;
+  max-width: 640px;
+  margin: 0 0 16px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid #e5e4e7;
+  border-radius: 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 1px solid #e5e4e7;
+  vertical-align: top;
+}
+
+.table th {
+  background: #fafafa;
+  font-weight: 600;
+  color: #18181b;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table code {
+  font-size: 13px;
+  color: #b91c1c;
+}
+

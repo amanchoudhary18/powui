@@ -1,0 +1,184 @@
+/* Plain CSS, not CSS Modules: tsup/esbuild's CSS Modules support doesn't produce JS-importable class
+   names through tsup's bundling pipeline, so collisions are avoided via the pow-button- prefix instead.
+   Colors come from @powui/tokens' generated CSS custom properties (tokens.css); sizing/motion tokens
+   are unitless, wrapped here. */
+
+.pow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--gutter-space2) * 1px);
+  padding: calc(var(--gutter-space2) * 1px) calc(var(--gutter-space6) * 1px);
+  border: 2px solid var(--theme-edge-background);
+  border-radius: calc(var(--border-radius-none) * 1px);
+  font-family: var(--typography-font-family-display);
+  font-weight: var(--typography-font-weight-normal);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background-color: var(--_pow-bg);
+  color: var(--_pow-text);
+  box-shadow: var(--_pow-shadow-x) var(--_pow-shadow-y) 0 0
+    var(--_pow-shadow-color);
+  transform: translate(0, 0);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color calc(var(--motion-duration-base) * 1ms)
+      cubic-bezier(var(--motion-easing-ease-out)),
+    transform calc(var(--motion-duration-fast) * 1ms)
+      cubic-bezier(var(--motion-easing-ease-out)),
+    box-shadow calc(var(--motion-duration-fast) * 1ms)
+      cubic-bezier(var(--motion-easing-ease-out));
+}
+
+.pow-button:hover:not(:disabled) {
+  background-color: var(--_pow-hover-bg);
+  transform: translate(
+    calc(var(--_pow-shadow-x) / 2),
+    calc(var(--_pow-shadow-y) / 2)
+  );
+}
+
+.pow-button:active:not(:disabled) {
+  transform: translate(var(--_pow-shadow-x), var(--_pow-shadow-y));
+  box-shadow: none;
+}
+
+.pow-button:focus-visible {
+  outline: calc(var(--border-width-bold) * 1px) solid var(--_pow-text);
+  outline-offset: calc(var(--gutter-space1) * 1px);
+}
+
+.pow-button:disabled {
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
+  transform: translate(0, 0);
+}
+
+/* Loading is a busy state, not a disabled one visually - keep it readable. */
+.pow-button:disabled[aria-busy="true"] {
+  opacity: var(--opacity-hover);
+}
+
+/* Sizes */
+
+.pow-button-size-sm {
+  font-size: calc(var(--typography-body-small-size) * 1px);
+  line-height: calc(var(--typography-body-small-line-height) * 1px);
+}
+
+.pow-button-size-md {
+  font-size: calc(var(--typography-body-medium-size) * 1px);
+  line-height: calc(var(--typography-body-medium-line-height) * 1px);
+}
+
+.pow-button-size-lg {
+  font-size: calc(var(--typography-body-large-size) * 1px);
+  line-height: calc(var(--typography-body-large-line-height) * 1px);
+}
+
+/* Shadows (hard offset; also drives the press transform above) */
+
+.pow-button-shadow-none {
+  --_pow-shadow-x: 0px;
+  --_pow-shadow-y: 0px;
+  --_pow-shadow-color: transparent;
+}
+
+.pow-button-shadow-sm {
+  --_pow-shadow-x: calc(var(--shadow-sm-x) * 1px);
+  --_pow-shadow-y: calc(var(--shadow-sm-y) * 1px);
+  --_pow-shadow-color: #000;
+}
+
+.pow-button-shadow-md {
+  --_pow-shadow-x: calc(var(--shadow-md-x) * 1px);
+  --_pow-shadow-y: calc(var(--shadow-md-y) * 1px);
+  --_pow-shadow-color: #000;
+}
+
+.pow-button-shadow-lg {
+  --_pow-shadow-x: calc(var(--shadow-lg-x) * 1px);
+  --_pow-shadow-y: calc(var(--shadow-lg-y) * 1px);
+  --_pow-shadow-color: #000;
+}
+
+/* Variants: solid ones share the same shape; outline swaps in a border. */
+
+.pow-button-variant-primary {
+  --_pow-bg: var(--theme-primary-background);
+  --_pow-text: var(--theme-primary-text);
+  --_pow-hover-bg: var(--theme-primary-hover-background);
+}
+
+.pow-button-variant-secondary {
+  --_pow-bg: var(--theme-secondary-background);
+  --_pow-text: var(--theme-secondary-text);
+  --_pow-hover-bg: var(--theme-secondary-hover-background);
+}
+
+.pow-button-variant-outline {
+  --_pow-bg: var(--theme-outline-background);
+  --_pow-text: var(--theme-outline-text);
+  --_pow-hover-bg: var(--theme-outline-hover-background);
+}
+
+.pow-button-variant-gamma {
+  --_pow-bg: var(--theme-gamma-background);
+  --_pow-text: var(--theme-gamma-text);
+  --_pow-hover-bg: var(--theme-gamma-hover-background);
+}
+
+.pow-button-variant-vision {
+  --_pow-bg: var(--theme-vision-background);
+  --_pow-text: var(--theme-vision-text);
+  --_pow-hover-bg: var(--theme-vision-hover-background);
+}
+
+.pow-button-variant-villain {
+  --_pow-bg: var(--theme-villain-background);
+  --_pow-text: var(--theme-villain-text);
+  --_pow-hover-bg: var(--theme-villain-hover-background);
+}
+
+.pow-button-variant-cosmic {
+  --_pow-bg: var(--theme-cosmic-background);
+  --_pow-text: var(--theme-cosmic-text);
+  --_pow-hover-bg: var(--theme-cosmic-hover-background);
+}
+
+.pow-button-variant-mutant {
+  --_pow-bg: var(--theme-mutant-background);
+  --_pow-text: var(--theme-mutant-text);
+  --_pow-hover-bg: var(--theme-mutant-hover-background);
+}
+
+.pow-button-variant-vibranium {
+  --_pow-bg: var(--theme-vibranium-background);
+  --_pow-text: var(--theme-vibranium-text);
+  --_pow-hover-bg: var(--theme-vibranium-hover-background);
+}
+
+/* Icons + label */
+
+.pow-button-icon {
+  display: inline-flex;
+  font-size: 1.15em;
+}
+
+.pow-button-icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.pow-button-spinner {
+  width: 1.15em;
+  height: 1.15em;
+  animation: pow-button-spin 0.8s linear infinite;
+}
+
+@keyframes pow-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,4 +1,4 @@
-import { applyTheme, type Theme } from '@powui/core';
+import { applyTheme, getTheme, type Theme } from '@powui/core';
 
 /** mode is one option today; more can be added here later without a rename. */
 export type PowConfig = {
@@ -15,4 +15,8 @@ function getSystemScheme(): 'light' | 'dark' {
 /** Call once before rendering — fixes the theme forever, no Provider, no live updates. */
 export function configure(config: PowConfig = {}): void {
   applyTheme(config.mode ?? 'system', getSystemScheme());
+  // tokens.css keys its color custom properties off [data-theme] on the root.
+  if (typeof document !== 'undefined') {
+    document.documentElement.dataset.theme = getTheme();
+  }
 }

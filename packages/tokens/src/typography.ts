@@ -1,6 +1,6 @@
-/** Bangers (display) and Outfit (body), not bundled; a standard type scale of sizes and weights. */
+/** Anton (display) and Outfit (body), self-hosted via @powui/tokens' generated CSS; a standard type scale of sizes and weights. */
 const fontFamily = {
-  display: 'Bangers',
+  display: 'Anton',
   body: 'Outfit',
 } as const;
 

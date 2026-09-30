@@ -1,0 +1,71 @@
+.example {
+  border: 1px solid #e5e4e7;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.preview {
+  padding: 24;
+  background: #fafafa;
+}
+
+.previewInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--gutter-space8) * 1px);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px 12px;
+  border-top: 1px solid #e5e4e7;
+  border-bottom: 1px solid #e5e4e7;
+  background: #f4f4f5;
+}
+
+.toolbarActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbarButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #52525b;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.toolbarButton:hover {
+  background: #e4e4e7;
+  color: #18181b;
+}
+
+.editor {
+  font-family: ui-monospace, Consolas, monospace !important;
+  font-size: 13px !important;
+  padding: 16px 20px !important;
+  min-height: 40px;
+  background: #f6f8fa;
+}
+
+.error {
+  margin: 0;
+  padding: 12px 20px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+}

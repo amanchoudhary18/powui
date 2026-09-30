@@ -24,7 +24,9 @@
     },
     "./tokens.css": "./dist/tokens.css"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "files": [
     "dist"
   ]
